@@ -1,53 +1,54 @@
-var tempArray = [];
-var calculatedValue;
+var calculatedValue = '';
 var calculator = (function() {
-    
      return {
-     	add : function(n1,n2){
-     		calculatedValue = n1+n2;
-		},
-
-		mult: function(n1,n2){
-			calculatedValue =  n1*n2;
+     	calculate : function(string){
+     		
+			try {
+				calculatedValue = eval(string);
+				} catch (e) {
+					if (e instanceof SyntaxError) {
+					console.log("Handling Exception");
+					}
+					
+				}
 		}
      }
 })();
 
-// calculator.add(2,4);
 
 /*Dom Manupulations*/
-var calculatorView = (function(){
 
+var domManipulator = (function(){
+	
+	return {
+		 pressed : function(ref){  
+			var value = ref.innerHTML;
+			if( value != "="){
+			calculatedValue = calculatedValue + value;
+			document.getElementById("inputNumber").value = calculatedValue;
+			calculator.calculate(calculatedValue);
+			
+			}
+			
+			else{
+			calculatedValue = calculatedValue;
+			calculator.calculate(calculatedValue);
+			document.getElementById("inputNumber").value = calculatedValue;
+			}
+	    },
+
+
+		 clearDom : function(ref){
+			document.getElementById("inputNumber").value = "";
+			calculatedValue = '';
+		}
+	}
 })();
-function pressed(ref){  
-    var value = ref.innerHTML;
-    tempArray.push(value);
-    document.getElementById("inputNumber").value = this.tempArray;
+
+function clearAction(ref){
+	domManipulator.clearDom(ref);
 }
 
-function calculate(ref){
-	var value = ref.innerHTML;
-	if(tempArray[1] == "+"){
-		var num1 = parseInt(tempArray[0]);
-		var num2 = parseInt(tempArray[2]);
-		calculator.add(num1,num2);
-		//console.log(calculatedValue);
-		document.getElementById("inputNumber").value = "";
-		document.getElementById("inputNumber").value = calculatedValue;
-	}
-
-	if(tempArray[1] == "*"){
-		var num1 = parseInt(tempArray[0]);
-		var num2 = parseInt(tempArray[2]);
-		calculator.mult(num1,num2);
-		console.log(calculatedValue);
-		document.getElementById("inputNumber").value = "";
-		document.getElementById("inputNumber").value = calculatedValue;
-	}
-}
-
-function clearDom(ref){
-	document.getElementById("inputNumber").value = "";
-	tempArray = [];
-	calculatedValue = null;
+function actions(ref){
+	domManipulator.pressed(ref);
 }
