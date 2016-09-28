@@ -42,21 +42,21 @@
   cursor: pointer;
 }
 .alphabet{
-    font-size: 50px;
-    float: left;
-    height: 54px;
-    width: 28px;
-    font-weight: 600;
-    margin-right: 30px;
-    cursor: pointer;
+  font-size: 50px;
+  float: left;
+  height: 54px;
+  width: 28px;
+  font-weight: 600;
+  margin-right: 30px;
+  cursor: pointer;
 }
 .mainDiv{
 	width: 75%;
-    height: 20%;
-    bottom: 10%;
-    position: absolute;
-    left: 20px;
-    margin: auto;
+  height: 20%;
+  bottom: 10%;
+  position: absolute;
+  left: 20px;
+  margin: auto;
 }
 .underline{
 	height: 50px;
@@ -68,11 +68,11 @@
 }
 .correctAnsContainer{
 	height: 61px;
-    width: 165px;
-    left: 0px;
-    right: 0px;
-    margin: auto;
-    top: 0px;
-    bottom: 0px;
-    position: absolute;
+  width: 165px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  top: 0px;
+  bottom: 0px;
+  position: absolute;
 }

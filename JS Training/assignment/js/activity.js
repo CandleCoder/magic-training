@@ -11,6 +11,10 @@ var activity = (function () {
 	          '</div>';
            $(elm).appendTo(main);
 		}
+
+		$( ".alphabet" ).draggable({
+		  addClasses: false
+		});
 		
     },
 }
