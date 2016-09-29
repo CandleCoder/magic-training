@@ -1,0 +1,18 @@
+{"object":[
+    
+    {"instructions":"Change the first and last letters.", "hint":"A word for angry.", "answer":"ran"},
+    
+    {"instructions":"Change the first letter.", "hint":"What you call a father.", "answer":"mad"},
+    
+    {"instructions":"Change the first and last letters.", "hint":"Soup comes in one of these.", "answer":"dad"},
+    
+    {"instructions":"Change the last letter.", "hint":"A pet that chases mice.", "answer":"cat"},
+    
+    {"instructions":"Change the first and last letters and add a consonant at the end.", "hint":"A bag.", "answer":"sack"},
+    
+    {"instructions":"Change the first letter.", "hint":"The opposite of front.", "answer":"back"},
+    
+    {"instructions":"Change the third letter and take off the last letter.", "hint":"What you hit a baseball with.", "answer":"bat"},
+    
+    {"instructions":"Change the first letter.", "hint":"A gentle tap.", "answer":"pat"}   
+]}
