@@ -20,9 +20,9 @@ html{
     height: 80px;
     position: relative;
     padding-left: 5px;
-    outline: none;
     border-radius: 14px;
-    text-align: center; 
+    text-align: center;
+    border: none;
 }
 .inputContainer{
 	width: 73%;
