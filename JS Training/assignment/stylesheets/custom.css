@@ -1,79 +1,150 @@
-.pageContainer{
-	height: : 768px;
-	width: 1024px;
-	position: absolute;
-	left: 0px;
-	right: 0px;
-	top: 0px;
-	bottom: 0px;
-	margin: auto;
+.pageContainer {
+    height: : 768px;
+    width: 1024px;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
 }
-.activityContainer{
-	height: 80%;
-	width: 100%;
-	background-color: #82D6FB;
-	position: absolute;
-	top:0px;
-	bottom: 0px;
-	margin: auto;
+
+.activityContainer {
+    height: 80%;
+    width: 100%;
+    background-color: #82D6FB;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
 }
+
 .ui-icon-info {
-  -ms-transform: scale(2); /* IE 9 */
-  -webkit-transform: scale(2); /* Chrome, Safari, Opera */
-  transform: scale(2);
-  left: 10px;
-  top: 10px;
-  cursor: pointer;
+    -ms-transform: scale(2);
+    /* IE 9 */
+    -webkit-transform: scale(2);
+    /* Chrome, Safari, Opera */
+    transform: scale(2);
+    left: 10px;
+    top: 10px;
+    cursor: pointer;
 }
-.ui-icon-refresh{
-  -ms-transform: scale(2); /* IE 9 */
-  -webkit-transform: scale(2); /* Chrome, Safari, Opera */
-  transform: scale(2);
-  left: 20px;
-  top: 10px;
-  cursor: pointer;
+
+.ui-icon-refresh {
+    -ms-transform: scale(2);
+    /* IE 9 */
+    -webkit-transform: scale(2);
+    /* Chrome, Safari, Opera */
+    transform: scale(2);
+    left: 20px;
+    top: 10px;
+    cursor: pointer;
 }
-.ui-icon-volume-off{
-  -ms-transform: scale(2); /* IE 9 */
-  -webkit-transform: scale(2); /* Chrome, Safari, Opera */
-  transform: scale(2);
-  left: 80px;
-  top: 80px;
-  cursor: pointer;
+
+.ui-icon-volume-off {
+    -ms-transform: scale(2);
+    /* IE 9 */
+    -webkit-transform: scale(2);
+    /* Chrome, Safari, Opera */
+    transform: scale(2);
+    left: 80px;
+    top: 80px;
+    cursor: pointer;
 }
-.alphabet{
-  font-size: 50px;
-  float: left;
-  height: 54px;
-  width: 28px;
-  font-weight: 600;
-  margin-right: 30px;
-  cursor: pointer;
+
+.alphabet {
+    font-size: 50px;
+    float: left;
+    height: 54px;
+    width: 28px;
+    font-weight: 600;
+    margin-right: 30px;
+    cursor: pointer;
 }
-.mainDiv{
-	width: 75%;
-  height: 20%;
-  bottom: 10%;
-  position: absolute;
-  left: 20px;
-  margin: auto;
+
+.mainDiv {
+    width: 75%;
+    height: 20%;
+    bottom: 10%;
+    position: absolute;
+    left: 20px;
+    margin: auto;
 }
-.underline{
-	height: 50px;
-	width: 50px;
-	float: left;
-	margin-right: 5px;
-	border-bottom: 3px solid #ffffff;
-	cursor: pointer;
+
+.underline {
+    height: 50px;
+    width: 50px;
+    float: left;
+    margin-right: 5px;
+    border-bottom: 3px solid #ffffff;
+    cursor: pointer;
 }
-.correctAnsContainer{
-	height: 61px;
-  width: 165px;
-  left: 0px;
-  right: 0px;
-  margin: auto;
-  top: 0px;
-  bottom: 0px;
-  position: absolute;
-  text-align: center;
+
+.correctAnsContainer {
+    height: 61px;
+    width: 230px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    top: 0px;
+    bottom: 0px;
+    position: absolute;
+    text-align: center;
+}
+.checkAnswer{
+    right: 0px;
+    position: absolute;
+    background-color: #4CAF50;
+   border: none;
+   color: white;
+   padding: 15px 32px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 16px;
+   margin: 4px 2px;
+   cursor: pointer;
+}
+.word{
+    font-size: 26px;
+    font-weight: 600;
+    left: 16%;
+    top: 16%;
+    position: absolute;
+    width: 5%;
+    margin: auto;
+}
+.instruction{
+    width: 32%;
+    height: 17%;
+    position: absolute;
+    left: 16%;
+    top: 25%;
+    font-size: 23px;
+    font-weight: 600;
+}
+.hint{
+    width: 32%;
+    height: 17%;
+    position: absolute;
+    left: 16%;
+    top: 35%;
+    font-size: 23px;
+    font-weight: 600;
+}
+.checkAnswer{
+   pointer-events: none;
+   cursor: auto;
+   opacity: 0.5;
+}
+.answerDiv{
+    right: 0px;
+    position: absolute;
+    bottom: 0px;
+    height: 80%;
+    width: 15%;
+    background-color: #b2b2b2;
+    color: white;
+    font-weight: 600;
+    font-size: 30px;
 }
