@@ -33,3 +33,83 @@ html{
     margin: auto;
     position: relative;
 }
+.nextPreviousSubmitContainer{
+    width: 100%;
+    top: 35%;
+    position: absolute;
+    height: 20%;
+}
+
+.previousButton{
+    background: url(../assets/prev.png) no-repeat;
+    height: 60px;
+    width: 82px;
+    float: left;
+    left: 13%;
+    margin: auto;
+    position: absolute;
+    display: none;
+}
+
+.submitButton{
+    float: left;
+    height: 30px;
+    width: 60px;
+    right: 0px;
+    left: 0px;
+    margin: auto;   
+    position: absolute;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 25px;
+    cursor: auto;
+    opacity: 0.5
+}
+
+.nextButton{
+    background: url(../assets/next.png) no-repeat;
+    height: 60px;
+    width: 82px;
+    float: left;
+    right: 17%;
+    margin: auto;
+    position: absolute;
+}
+
+.controlsContainer{
+    height: 58px;
+    width: 150px;
+    right: 0px;
+    position: absolute;
+    margin: auto;
+    bottom: 0px;
+}
+
+.infoButton{
+    background: url(../assets/info.png) no-repeat;
+    background-size: 39px;
+    height: 50px;
+    width: 50px;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    float: left;
+    cursor: pointer;
+    opacity: 0.5;
+}
+.refreshButton{
+    background: url(../assets/refresh.png) no-repeat;
+    background-size: 39px;
+    height: 50px;
+    width: 50px;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    opacity: 0.5;
+    float: left;
+    cursor: pointer;
+}
