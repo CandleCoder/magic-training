@@ -1,7 +1,15 @@
 var activity = (function () {
 	   
-var series=new Array();
+    var series=new Array();
+    var filldataset = series[pageCount];
+	var filldataarray;
+	var hidefilldata;
+	var attempted = 'notAttempted';
+	var firstHiddenPlace;
+	var secondHiddenPlace;
+	var thirdHiddenPlace;
 	var pageCount = 0;
+	var enteredAnswer = [];
 	var series= new Array();
 	var saveseries = new Array();
 	series=[[[''],['']],
@@ -101,13 +109,13 @@ var series=new Array();
      	},
 
      fillDataIntoView: function(){
-     	var filldataset = series[pageCount];
-		var filldataarray = filldataset[0];
-		var hidefilldata = filldataset[1];
+     	filldataset = series[pageCount];
+		filldataarray = filldataset[0];
+		hidefilldata = filldataset[1];
 
-		var firstHiddenPlace = hidefilldata[0];
-		var secondHiddenPlace = hidefilldata[1];
-		var thirdHiddenPlace = hidefilldata[2];
+		firstHiddenPlace = hidefilldata[0];
+		secondHiddenPlace = hidefilldata[1];
+		thirdHiddenPlace = hidefilldata[2];
 
 
 				  $('.firstNumber').val(filldataarray[0]);
@@ -131,6 +139,7 @@ var series=new Array();
      		if (pageCount < 4){
      			$('.previousButton').css({'display':'block'});
      			pageCount++;
+     			attempted = 'notAttempted';
      			self.fillDataIntoView();
      		}
 
@@ -145,6 +154,7 @@ var series=new Array();
      		if(pageCount > 0){
      			$('.nextButton').css({'display':'block'});
      			pageCount--;
+     			attempted = 'notAttempted';
      			
      			self.fillDataIntoView();
      		}
@@ -170,5 +180,45 @@ var series=new Array();
 		        }
 		    });
     },
+
+    submitHandler: function(){
+
+      if(attempted != 'attempted'){
+      	 $(".form :input").each(function(){
+		 var input = $(this);
+		 enteredAnswer.push(parseInt(input.val()));
+		});
+
+       enteredAnswer.sort(function(a, b){return a-b});
+
+       if(JSON.stringify(enteredAnswer)==JSON.stringify(filldataarray)){
+       		attempted = 'attempted';
+		   $('#feedback').dialog({
+		   	open: function() {
+			      var markup = 'Answer is Correct';
+			      $(this).html(markup);
+			    },
+		   });
+       	 
+       }
+       else{
+       	  attempted = 'attempted';
+       	  $('#feedback').dialog({
+       	  	open: function() {
+			      var markup = 'Answer is InCorrect';
+			      $(this).html(markup);
+			    },
+       	  });
+       }
+      }
+      else{
+      	$('#feedback').dialog({
+       	  	open: function() {
+			      var markup = 'You have attempted this question';
+			      $(this).html(markup);
+			    },
+       	  });
+      }
+    }
  }
 })();
