@@ -31,6 +31,8 @@ var series=new Array();
      	     $("#infoButton").click(function () {
 		            $('#dialog').dialog('open');
 		        });
+     	
+     	     this.checkInputState();
      	},
 
      	generateSeries: function(){   	
@@ -94,17 +96,20 @@ var series=new Array();
 					series[4][1][i]=arr5[i];
 				}
 	     series.sort( function() { return Math.random() - 0.5 } );
-	     //console.log(arr1);
-	     console.log(series);
-
+	    
 	     this.fillDataIntoView();
-	     //console.log(saveseries[pageCount][3]);
      	},
 
      fillDataIntoView: function(){
      	var filldataset = series[pageCount];
 		var filldataarray = filldataset[0];
 		var hidefilldata = filldataset[1];
+
+		var firstHiddenPlace = hidefilldata[0];
+		var secondHiddenPlace = hidefilldata[1];
+		var thirdHiddenPlace = hidefilldata[2];
+
+
 				  $('.firstNumber').val(filldataarray[0]);
 				  $('.secondNumber').val(filldataarray[1]);
 				  $('.thirdNumber').val(filldataarray[2]);
@@ -113,6 +118,11 @@ var series=new Array();
 				  $('.sixthNumber').val(filldataarray[5]);
 				  $('.seventhNumber').val(filldataarray[6]);
 				  $('.eightNumber').val(filldataarray[7]);
+
+				 $('input').eq(firstHiddenPlace).val('');
+				 $('input').eq(secondHiddenPlace).val('');
+				 $('input').eq(thirdHiddenPlace).val('');	 
+
 		},
 
      handlePage : function(){
@@ -120,7 +130,6 @@ var series=new Array();
      	$('#nextButton').unbind('click').click(function(){
      		if (pageCount < 4){
      			$('.previousButton').css({'display':'block'});
-     			console.log(pageCount);
      			pageCount++;
      			self.fillDataIntoView();
      		}
@@ -138,13 +147,28 @@ var series=new Array();
      			pageCount--;
      			
      			self.fillDataIntoView();
-     			console.log(pageCount);
      		}
      		else if(pageCount ==0){
      			$('.previousButton').css({'display':'none'});
-     			console.log(pageCount);
      		}
      	});
-     }
+     },
+
+    checkInputState : function(){
+		 
+			  $(".form > :input").keyup(function() {
+		        var $emptyFields = $('.form :input').filter(function() {
+		            return $.trim(this.value) === "";
+		        });
+
+		        if (!$emptyFields.length) {
+		           $('.submitButton').css({'cursor':'pointer','opacity':'1'});
+		        }
+
+		        else{
+		        	$('.submitButton').css({'cursor':'auto','opacity':'0.5'});
+		        }
+		    });
+    },
  }
 })();
