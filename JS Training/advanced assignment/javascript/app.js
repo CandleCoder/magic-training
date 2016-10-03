@@ -44,7 +44,6 @@ var activity = (function () {
 		        });
      	
      	     this.checkInputState();
-     	     console.log(enteredSeries);
      	},
 
      	generateSeries: function(){   	
@@ -114,9 +113,6 @@ var activity = (function () {
 
      fillDataIntoView: function(){
      	
-     	console.log(enteredSeries.a);
-     	console.log(attemptedArray[pageCount]);
-     	console.log(attemptedArray[pageCount] == 'attempted');
      	if(attemptedArray[pageCount] == 'notAttempted'){
      	filldataset = series[pageCount];
 		filldataarray = filldataset[0];
@@ -221,7 +217,6 @@ var activity = (function () {
      	});
 
      	$('#previousButton').unbind('click').click(function(){
-     		console.log(pageCount);
      		if(pageCount > 0){
      			$('.nextButton').css({'display':'block'});
      			pageCount--;
@@ -310,7 +305,6 @@ var activity = (function () {
 			       	  });
 		    }
         });
-      console.log(enteredSeries);
     }
  }
 })();
