@@ -10,7 +10,10 @@ var activity = (function () {
 	var thirdHiddenPlace;
 	var pageCount = 0;
 	var enteredAnswer = [];
+	var tempArray = [];
+	var attemptedArray = ['notAttempted','notAttempted','notAttempted','notAttempted','notAttempted']; 
 	var series= new Array();
+	var enteredSeries = {a:[],b:[],c:[],d:[],e:[]};
 	var saveseries = new Array();
 	series=[[[''],['']],
 				[[''],['']],
@@ -41,6 +44,7 @@ var activity = (function () {
 		        });
      	
      	     this.checkInputState();
+     	     console.log(enteredSeries);
      	},
 
      	generateSeries: function(){   	
@@ -109,6 +113,11 @@ var activity = (function () {
      	},
 
      fillDataIntoView: function(){
+     	
+     	console.log(enteredSeries.a);
+     	console.log(attemptedArray[pageCount]);
+     	console.log(attemptedArray[pageCount] == 'attempted');
+     	if(attemptedArray[pageCount] == 'notAttempted'){
      	filldataset = series[pageCount];
 		filldataarray = filldataset[0];
 		hidefilldata = filldataset[1];
@@ -129,7 +138,68 @@ var activity = (function () {
 
 				 $('input').eq(firstHiddenPlace).val('');
 				 $('input').eq(secondHiddenPlace).val('');
-				 $('input').eq(thirdHiddenPlace).val('');	 
+				 $('input').eq(thirdHiddenPlace).val('');	
+     	}
+
+     	else if(attemptedArray[pageCount] == 'attempted' && pageCount==0){
+     		
+		 	  	  $('.firstNumber').val(enteredSeries.a[0]);
+				  $('.secondNumber').val(enteredSeries.a[1]);
+				  $('.thirdNumber').val(enteredSeries.a[2]);
+				  $('.fourthNumber').val(enteredSeries.a[3]);
+				  $('.fifthNumber').val(enteredSeries.a[4]);
+				  $('.sixthNumber').val(enteredSeries.a[5]);
+				  $('.seventhNumber').val(enteredSeries.a[6]);
+				  $('.eightNumber').val(enteredSeries.a[7]);
+     	}
+
+     	else if(attemptedArray[pageCount] == 'attempted' && pageCount==1){
+     		
+		 	  	  $('.firstNumber').val(enteredSeries.b[0]);
+				  $('.secondNumber').val(enteredSeries.b[1]);
+				  $('.thirdNumber').val(enteredSeries.b[2]);
+				  $('.fourthNumber').val(enteredSeries.b[3]);
+				  $('.fifthNumber').val(enteredSeries.b[4]);
+				  $('.sixthNumber').val(enteredSeries.b[5]);
+				  $('.seventhNumber').val(enteredSeries.b[6]);
+				  $('.eightNumber').val(enteredSeries.b[7]);
+     	}
+
+     	else if(attemptedArray[pageCount] == 'attempted' && pageCount==2){
+     		
+		 	  	  $('.firstNumber').val(enteredSeries.c[0]);
+				  $('.secondNumber').val(enteredSeries.c[1]);
+				  $('.thirdNumber').val(enteredSeries.c[2]);
+				  $('.fourthNumber').val(enteredSeries.c[3]);
+				  $('.fifthNumber').val(enteredSeries.c[4]);
+				  $('.sixthNumber').val(enteredSeries.a[5]);
+				  $('.seventhNumber').val(enteredSeries.c[6]);
+				  $('.eightNumber').val(enteredSeries.c[7]);
+     	}
+
+     	else if(attemptedArray[pageCount] == 'attempted' && pageCount==3){
+     		
+		 	  	  $('.firstNumber').val(enteredSeries.d[0]);
+				  $('.secondNumber').val(enteredSeries.d[1]);
+				  $('.thirdNumber').val(enteredSeries.d[2]);
+				  $('.fourthNumber').val(enteredSeries.d[3]);
+				  $('.fifthNumber').val(enteredSeries.d[4]);
+				  $('.sixthNumber').val(enteredSeries.d[5]);
+				  $('.seventhNumber').val(enteredSeries.d[6]);
+				  $('.eightNumber').val(enteredSeries.d[7]);
+     	}
+
+     	else if(attemptedArray[pageCount] == 'attempted' && pageCount==4){
+     		
+		 	  	  $('.firstNumber').val(enteredSeries.e[0]);
+				  $('.secondNumber').val(enteredSeries.e[1]);
+				  $('.thirdNumber').val(enteredSeries.e[2]);
+				  $('.fourthNumber').val(enteredSeries.e[3]);
+				  $('.fifthNumber').val(enteredSeries.e[4]);
+				  $('.sixthNumber').val(enteredSeries.e[5]);
+				  $('.seventhNumber').val(enteredSeries.e[6]);
+				  $('.eightNumber').val(enteredSeries.e[7]);
+     	}
 
 		},
 
@@ -139,7 +209,8 @@ var activity = (function () {
      		if (pageCount < 4){
      			$('.previousButton').css({'display':'block'});
      			pageCount++;
-     			attempted = 'notAttempted';
+     			// attempted = 'notAttempted';
+     			$('.submitButton').css({'cursor':'auto','opacity':'0.5'});
      			self.fillDataIntoView();
      		}
 
@@ -154,8 +225,8 @@ var activity = (function () {
      		if(pageCount > 0){
      			$('.nextButton').css({'display':'block'});
      			pageCount--;
-     			attempted = 'notAttempted';
-     			
+     			// attempted = 'notAttempted';
+     			$('.submitButton').css({'cursor':'auto','opacity':'0.5'});
      			self.fillDataIntoView();
      		}
      		else if(pageCount ==0){
@@ -182,36 +253,18 @@ var activity = (function () {
     },
 
     submitHandler: function(){
-
-      if(attempted != 'attempted'){
+    enteredAnswer = [];
+      tempArray = [];
+      if(attemptedArray[pageCount] != 'attempted'){
       	 $(".form :input").each(function(){
 		 var input = $(this);
 		 enteredAnswer.push(parseInt(input.val()));
+		 tempArray.push(parseInt(input.val()));
 		});
+      	 enteredAnswer.sort(function(a, b){return a-b});
+		}
 
-       enteredAnswer.sort(function(a, b){return a-b});
-
-       if(JSON.stringify(enteredAnswer)==JSON.stringify(filldataarray)){
-       		attempted = 'attempted';
-		   $('#feedback').dialog({
-		   	open: function() {
-			      var markup = 'Answer is Correct';
-			      $(this).html(markup);
-			    },
-		   });
-       	 
-       }
-       else{
-       	  attempted = 'attempted';
-       	  $('#feedback').dialog({
-       	  	open: function() {
-			      var markup = 'Answer is InCorrect';
-			      $(this).html(markup);
-			    },
-       	  });
-       }
-      }
-      else{
+		else{
       	$('#feedback').dialog({
        	  	open: function() {
 			      var markup = 'You have attempted this question';
@@ -219,6 +272,45 @@ var activity = (function () {
 			    },
        	  });
       }
+
+       if(pageCount == 0 && enteredSeries.a !=[]){
+       	enteredSeries.a = tempArray;
+       }
+       if(pageCount == 1 && enteredAnswer.b !=[]){
+       	enteredSeries.b = tempArray;
+       }
+       if(pageCount == 2 && enteredSeries.c != []){
+       	enteredSeries.c = tempArray;
+       }
+       if(pageCount == 3 && enteredSeries.d != []){
+       	enteredSeries.d = tempArray;
+       }
+       if(pageCount == 4 && enteredSeries.ce != []){
+       	enteredSeries.e = tempArray;
+       }
+
+       enteredAnswer.forEach( function( value ) {
+		    if( filldataarray.indexOf( value ) != -1 ) {
+		       attemptedArray[pageCount] = 'attempted';
+				   $('#feedback').dialog({
+				   	open: function() {
+					      var markup = 'Answer is Correct';
+					      $(this).html(markup);
+					    },
+				   });
+		    }
+
+		    else{
+		    	 attemptedArray[pageCount] = 'attempted';
+			       	  $('#feedback').dialog({
+			       	  	open: function() {
+						      var markup = 'Answer is InCorrect';
+						      $(this).html(markup);
+						    },
+			       	  });
+		    }
+        });
+      console.log(enteredSeries);
     }
  }
 })();
